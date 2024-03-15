@@ -129,6 +129,9 @@ class Crop extends StatelessWidget {
   /// (Advanced) Injected logic for parsing image detail.
   final ImageParser imageParser;
 
+  /// (Advanced) Angle of the image in degrees.
+  final double? angle;
+
   Crop({
     super.key,
     required this.image,
@@ -154,6 +157,7 @@ class Crop extends StatelessWidget {
     this.imageCropper = defaultImageCropper,
     ImageParser? imageParser,
     this.scrollZoomSensitivity = 0.05,
+    this.angle,
   })  : assert((initialSize ?? 1.0) <= 1.0,
             'initialSize must be less than 1.0, or null meaning not specified.'),
         this.imageParser = imageParser ?? defaultImageParser;
@@ -192,6 +196,7 @@ class Crop extends StatelessWidget {
             imageCropper: imageCropper,
             formatDetector: formatDetector,
             imageParser: imageParser,
+            angle: angle,
           ),
         );
       },
@@ -223,6 +228,7 @@ class _CropEditor extends StatefulWidget {
   final FormatDetector? formatDetector;
   final ImageParser imageParser;
   final double scrollZoomSensitivity;
+  final double? angle;
 
   const _CropEditor({
     super.key,
@@ -249,6 +255,7 @@ class _CropEditor extends StatefulWidget {
     required this.formatDetector,
     required this.imageParser,
     required this.scrollZoomSensitivity,
+    this.angle,
   });
 
   @override
@@ -273,9 +280,6 @@ class _CropEditorState extends State<_CropEditor> {
   double? _aspectRatio;
   bool _withCircleUi = false;
   bool _isFitVertically = false;
-
-  /// radian
-  double? radian;
 
   /// [ViewportBasedRect] of cropping area
   /// The result of cropping is based on this [_cropRect].
@@ -608,8 +612,8 @@ class _CropEditorState extends State<_CropEditor> {
                     color: widget.baseColor,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    transform: radian != null
-                        ? Matrix4.rotationZ(radian! * pi / 180)
+                    transform: widget.angle != null
+                        ? Matrix4.rotationZ(widget.angle! * pi / 180)
                         : null,
                     child: Stack(
                       children: [
