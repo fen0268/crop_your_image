@@ -130,7 +130,7 @@ class Crop extends StatelessWidget {
   final ImageParser imageParser;
 
   /// (Advanced) Angle of the image in degrees.
-  final double? angle;
+  final double angle;
 
   Crop({
     super.key,
@@ -157,7 +157,7 @@ class Crop extends StatelessWidget {
     this.imageCropper = defaultImageCropper,
     ImageParser? imageParser,
     this.scrollZoomSensitivity = 0.05,
-    this.angle,
+    this.angle = 30,
   })  : assert((initialSize ?? 1.0) <= 1.0,
             'initialSize must be less than 1.0, or null meaning not specified.'),
         this.imageParser = imageParser ?? defaultImageParser;
