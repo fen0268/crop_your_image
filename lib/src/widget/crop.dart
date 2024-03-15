@@ -228,7 +228,7 @@ class _CropEditor extends StatefulWidget {
   final FormatDetector? formatDetector;
   final ImageParser imageParser;
   final double scrollZoomSensitivity;
-  final double? angle;
+  final double angle;
 
   const _CropEditor({
     super.key,
@@ -255,7 +255,7 @@ class _CropEditor extends StatefulWidget {
     required this.formatDetector,
     required this.imageParser,
     required this.scrollZoomSensitivity,
-    this.angle,
+    required this.angle,
   });
 
   @override
@@ -612,9 +612,7 @@ class _CropEditorState extends State<_CropEditor> {
                     color: widget.baseColor,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    transform: widget.angle != null
-                        ? Matrix4.rotationZ(widget.angle! * pi / 180)
-                        : null,
+                    transform: Matrix4.rotationZ(widget.angle * pi / 180),
                     child: Stack(
                       children: [
                         Positioned(
