@@ -8,8 +8,8 @@ import 'package:crop_your_image/src/widget/circle_crop_area_clipper.dart';
 import 'package:crop_your_image/src/widget/constants.dart';
 import 'package:crop_your_image/src/widget/rect_crop_area_clipper.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 
 typedef ViewportBasedRect = Rect;
 typedef ImageBasedRect = Rect;
@@ -273,6 +273,9 @@ class _CropEditorState extends State<_CropEditor> {
   double? _aspectRatio;
   bool _withCircleUi = false;
   bool _isFitVertically = false;
+
+  /// radian
+  double? radian;
 
   /// [ViewportBasedRect] of cropping area
   /// The result of cropping is based on this [_cropRect].
@@ -605,6 +608,9 @@ class _CropEditorState extends State<_CropEditor> {
                     color: widget.baseColor,
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
+                    transform: radian != null
+                        ? Matrix4.rotationZ(radian! * pi / 180)
+                        : null,
                     child: Stack(
                       children: [
                         Positioned(
