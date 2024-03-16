@@ -617,7 +617,7 @@ class _CropEditorState extends State<_CropEditor> {
                       children: [
                         Positioned(
                           left: _imageRect.left,
-                          top: _imageRect.top,
+                          bottom: _imageRect.bottom,
                           child: Image.memory(
                             widget.image,
                             width: _isFitVertically
