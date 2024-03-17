@@ -614,12 +614,12 @@ class _CropEditorState extends State<_CropEditor> {
                     height: MediaQuery.of(context).size.height,
                     child: Stack(
                       children: [
-                        Transform.rotate(
-                          angle: widget.angle * pi / 180,
-                          child: Positioned(
-                            // イメージの位置
-                            left: _imageRect.left,
-                            top: _imageRect.top,
+                        Positioned(
+                          // イメージの位置
+                          left: _imageRect.left,
+                          top: _imageRect.top,
+                          child: Transform.rotate(
+                            angle: widget.angle * pi / 180,
                             child: Image.memory(
                               widget.image,
                               width: _isFitVertically
@@ -645,8 +645,7 @@ class _CropEditorState extends State<_CropEditor> {
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    color: Colors.blue,
-                    // color: widget.maskColor ?? Colors.black.withAlpha(100),
+                    color: widget.maskColor ?? Colors.black.withAlpha(100),
                   ),
                 ),
               ),
