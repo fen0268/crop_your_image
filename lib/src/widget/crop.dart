@@ -608,18 +608,18 @@ class _CropEditorState extends State<_CropEditor> {
                 child: GestureDetector(
                   onScaleStart: widget.interactive ? _startScale : null,
                   onScaleUpdate: widget.interactive ? _updateScale : null,
-                  child: Transform.rotate(
-                    angle: widget.angle * pi / 180,
-                    child: Container(
-                      color: widget.baseColor,
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: Stack(
-                        children: [
-                          Positioned(
+                  child: Container(
+                    color: widget.baseColor,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Stack(
+                      children: [
+                        Transform.rotate(
+                          angle: widget.angle * pi / 180,
+                          child: Positioned(
                             // イメージの位置
                             left: _imageRect.left,
-                            bottom: _imageRect.bottom,
+                            top: _imageRect.top,
                             child: Image.memory(
                               widget.image,
                               width: _isFitVertically
@@ -631,8 +631,8 @@ class _CropEditorState extends State<_CropEditor> {
                               fit: BoxFit.contain,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
