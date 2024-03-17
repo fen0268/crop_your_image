@@ -608,28 +608,31 @@ class _CropEditorState extends State<_CropEditor> {
                 child: GestureDetector(
                   onScaleStart: widget.interactive ? _startScale : null,
                   onScaleUpdate: widget.interactive ? _updateScale : null,
-                  child: Container(
-                    color: widget.baseColor,
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    transform: Matrix4.rotationZ(widget.angle * pi / 180),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: _imageRect.left,
-                          bottom: _imageRect.bottom,
-                          child: Image.memory(
-                            widget.image,
-                            width: _isFitVertically
-                                ? null
-                                : MediaQuery.of(context).size.width * _scale,
-                            height: _isFitVertically
-                                ? MediaQuery.of(context).size.height * _scale
-                                : null,
-                            fit: BoxFit.contain,
+                  child: Transform.rotate(
+                    angle: widget.angle * pi / 180,
+                    child: Container(
+                      color: widget.baseColor,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            // イメージの位置
+                            left: _imageRect.left,
+                            bottom: _imageRect.bottom,
+                            child: Image.memory(
+                              widget.image,
+                              width: _isFitVertically
+                                  ? null
+                                  : MediaQuery.of(context).size.width * _scale,
+                              height: _isFitVertically
+                                  ? MediaQuery.of(context).size.height * _scale
+                                  : null,
+                              fit: BoxFit.contain,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
