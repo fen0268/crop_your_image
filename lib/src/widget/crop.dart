@@ -649,106 +649,106 @@ class _CropEditorState extends State<_CropEditor> {
                   ),
                 ),
               ),
-              if (!widget.interactive && !widget.fixCropRect)
-                Positioned(
-                  left: _cropRect.left,
-                  top: _cropRect.top,
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      cropRect = calculator.moveRect(
-                        _cropRect,
-                        details.delta.dx,
-                        details.delta.dy,
-                        _imageRect,
-                      );
-                    },
-                    child: Container(
-                      width: _cropRect.width,
-                      height: _cropRect.height,
-                      color: Colors.transparent,
-                    ),
-                  ),
-                ),
-              Positioned(
-                left: _cropRect.left - (dotTotalSize / 2),
-                top: _cropRect.top - (dotTotalSize / 2),
-                child: GestureDetector(
-                  onPanUpdate: widget.fixCropRect
-                      ? null
-                      : (details) {
-                          cropRect = calculator.moveTopLeft(
-                            _cropRect,
-                            details.delta.dx,
-                            details.delta.dy,
-                            _imageRect,
-                            _aspectRatio,
-                          );
-                        },
-                  child: widget.cornerDotBuilder
-                          ?.call(dotTotalSize, EdgeAlignment.topLeft) ??
-                      const DotControl(),
-                ),
-              ),
-              Positioned(
-                left: _cropRect.right - (dotTotalSize / 2),
-                top: _cropRect.top - (dotTotalSize / 2),
-                child: GestureDetector(
-                  onPanUpdate: widget.fixCropRect
-                      ? null
-                      : (details) {
-                          cropRect = calculator.moveTopRight(
-                            _cropRect,
-                            details.delta.dx,
-                            details.delta.dy,
-                            _imageRect,
-                            _aspectRatio,
-                          );
-                        },
-                  child: widget.cornerDotBuilder
-                          ?.call(dotTotalSize, EdgeAlignment.topRight) ??
-                      const DotControl(),
-                ),
-              ),
-              Positioned(
-                left: _cropRect.left - (dotTotalSize / 2),
-                top: _cropRect.bottom - (dotTotalSize / 2),
-                child: GestureDetector(
-                  onPanUpdate: widget.fixCropRect
-                      ? null
-                      : (details) {
-                          cropRect = calculator.moveBottomLeft(
-                            _cropRect,
-                            details.delta.dx,
-                            details.delta.dy,
-                            _imageRect,
-                            _aspectRatio,
-                          );
-                        },
-                  child: widget.cornerDotBuilder
-                          ?.call(dotTotalSize, EdgeAlignment.bottomLeft) ??
-                      const DotControl(),
-                ),
-              ),
-              Positioned(
-                left: _cropRect.right - (dotTotalSize / 2),
-                top: _cropRect.bottom - (dotTotalSize / 2),
-                child: GestureDetector(
-                  onPanUpdate: widget.fixCropRect
-                      ? null
-                      : (details) {
-                          cropRect = calculator.moveBottomRight(
-                            _cropRect,
-                            details.delta.dx,
-                            details.delta.dy,
-                            _imageRect,
-                            _aspectRatio,
-                          );
-                        },
-                  child: widget.cornerDotBuilder
-                          ?.call(dotTotalSize, EdgeAlignment.bottomRight) ??
-                      const DotControl(),
-                ),
-              ),
+              // if (!widget.interactive && !widget.fixCropRect)
+            //     Positioned(
+            //       left: _cropRect.left,
+            //       top: _cropRect.top,
+            //       child: GestureDetector(
+            //         onPanUpdate: (details) {
+            //           cropRect = calculator.moveRect(
+            //             _cropRect,
+            //             details.delta.dx,
+            //             details.delta.dy,
+            //             _imageRect,
+            //           );
+            //         },
+            //         child: Container(
+            //           width: _cropRect.width,
+            //           height: _cropRect.height,
+            //           color: Colors.transparent,
+            //         ),
+            //       ),
+            //     ),
+            //   Positioned(
+            //     left: _cropRect.left - (dotTotalSize / 2),
+            //     top: _cropRect.top - (dotTotalSize / 2),
+            //     child: GestureDetector(
+            //       onPanUpdate: widget.fixCropRect
+            //           ? null
+            //           : (details) {
+            //               cropRect = calculator.moveTopLeft(
+            //                 _cropRect,
+            //                 details.delta.dx,
+            //                 details.delta.dy,
+            //                 _imageRect,
+            //                 _aspectRatio,
+            //               );
+            //             },
+            //       child: widget.cornerDotBuilder
+            //               ?.call(dotTotalSize, EdgeAlignment.topLeft) ??
+            //           const DotControl(),
+            //     ),
+            //   ),
+            //   Positioned(
+            //     left: _cropRect.right - (dotTotalSize / 2),
+            //     top: _cropRect.top - (dotTotalSize / 2),
+            //     child: GestureDetector(
+            //       onPanUpdate: widget.fixCropRect
+            //           ? null
+            //           : (details) {
+            //               cropRect = calculator.moveTopRight(
+            //                 _cropRect,
+            //                 details.delta.dx,
+            //                 details.delta.dy,
+            //                 _imageRect,
+            //                 _aspectRatio,
+            //               );
+            //             },
+            //       child: widget.cornerDotBuilder
+            //               ?.call(dotTotalSize, EdgeAlignment.topRight) ??
+            //           const DotControl(),
+            //     ),
+            //   ),
+            //   Positioned(
+            //     left: _cropRect.left - (dotTotalSize / 2),
+            //     top: _cropRect.bottom - (dotTotalSize / 2),
+            //     child: GestureDetector(
+            //       onPanUpdate: widget.fixCropRect
+            //           ? null
+            //           : (details) {
+            //               cropRect = calculator.moveBottomLeft(
+            //                 _cropRect,
+            //                 details.delta.dx,
+            //                 details.delta.dy,
+            //                 _imageRect,
+            //                 _aspectRatio,
+            //               );
+            //             },
+            //       child: widget.cornerDotBuilder
+            //               ?.call(dotTotalSize, EdgeAlignment.bottomLeft) ??
+            //           const DotControl(),
+            //     ),
+            //   ),
+            //   Positioned(
+            //     left: _cropRect.right - (dotTotalSize / 2),
+            //     top: _cropRect.bottom - (dotTotalSize / 2),
+            //     child: GestureDetector(
+            //       onPanUpdate: widget.fixCropRect
+            //           ? null
+            //           : (details) {
+            //               cropRect = calculator.moveBottomRight(
+            //                 _cropRect,
+            //                 details.delta.dx,
+            //                 details.delta.dy,
+            //                 _imageRect,
+            //                 _aspectRatio,
+            //               );
+            //             },
+            //       child: widget.cornerDotBuilder
+            //               ?.call(dotTotalSize, EdgeAlignment.bottomRight) ??
+            //           const DotControl(),
+            //     ),
+            //   ),
             ],
           );
   }
